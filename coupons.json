@@ -1,0 +1,216 @@
+{
+  "generated_at": "2026-03-16T08:24:59.506236Z",
+  "total_coupons": 19,
+  "brands_scraped": 19,
+  "coupons": [
+    {
+      "brand": "Nicobar",
+      "category": "fashion",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/nicobar",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:00:18.447809Z"
+    },
+    {
+      "brand": "Okhai",
+      "category": "fashion",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/okhai",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:02:02.516801Z"
+    },
+    {
+      "brand": "Teal by Chumbak",
+      "category": "handbags",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/chumbak",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:07:28.689334Z"
+    },
+    {
+      "brand": "Baggit",
+      "category": "handbags",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/baggit",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:08:01.410305Z"
+    },
+    {
+      "brand": "DailyObjects",
+      "category": "handbags",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/dailyobjects",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:08:20.001763Z"
+    },
+    {
+      "brand": "Lakme",
+      "category": "cosmetics",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/lakme",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:09:14.174785Z"
+    },
+    {
+      "brand": "MyGlamm",
+      "category": "cosmetics",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/myglamm",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:09:32.338098Z"
+    },
+    {
+      "brand": "Maybelline",
+      "category": "cosmetics",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/maybelline",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:09:57.825600Z"
+    },
+    {
+      "brand": "Voylla",
+      "category": "jewellery",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/voylla",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:14:51.540499Z"
+    },
+    {
+      "brand": "Melorra",
+      "category": "jewellery",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/melorra",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:17:03.046936Z"
+    },
+    {
+      "brand": "CaratLane",
+      "category": "jewellery",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/caratlane",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:17:20.681592Z"
+    },
+    {
+      "brand": "Outhouse Jewellery",
+      "category": "jewellery",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/outhouse-jewellery",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:17:45.064492Z"
+    },
+    {
+      "brand": "Bluestone",
+      "category": "jewellery",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/bluestone",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:18:04.579751Z"
+    },
+    {
+      "brand": "Wellbeing Nutrition",
+      "category": "wellness",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/wellbeing-nutrition",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:18:30.488125Z"
+    },
+    {
+      "brand": "BookMyShow",
+      "category": "experiences",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/bookmyshow",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:19:50.587533Z"
+    },
+    {
+      "brand": "Thrillophilia",
+      "category": "experiences",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/thrillophilia",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:20:22.923055Z"
+    },
+    {
+      "brand": "Winni",
+      "category": "gifting",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/winni",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:21:12.016595Z"
+    },
+    {
+      "brand": "Purplle",
+      "category": "cosmetics",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/purplle",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:23:35.629430Z"
+    },
+    {
+      "brand": "Mamaearth",
+      "category": "grooming",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/mamaearth",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T08:24:42.264567Z"
+    }
+  ]
+}

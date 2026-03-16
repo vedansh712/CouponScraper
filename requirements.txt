@@ -1,0 +1,6 @@
+# Laya Coupon Scraper — Python Dependencies
+# Install with: pip install -r requirements.txt
+
+requests==2.31.0          # HTTP requests
+beautifulsoup4==4.12.3    # HTML parsing
+lxml==5.1.0               # Faster HTML parser (used by BeautifulSoup)

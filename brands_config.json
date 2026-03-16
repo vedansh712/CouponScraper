@@ -1,0 +1,954 @@
+[
+  {
+    "brand": "Bombay Shirt Company",
+    "category": "fashion",
+    "grabon_slug": "bombay-shirt-company-coupons",
+    "coupondunia_slug": "bombay-shirt-company",
+    "website": "https://www.bombayshirtcompany.com",
+    "offers_path": "/pages/offers"
+  },
+  {
+    "brand": "Rare Rabbit",
+    "category": "fashion",
+    "grabon_slug": "rare-rabbit-coupons",
+    "coupondunia_slug": "rare-rabbit",
+    "website": "https://www.rarerabbit.in",
+    "offers_path": "/pages/sale"
+  },
+  {
+    "brand": "AND",
+    "category": "fashion",
+    "grabon_slug": "and-coupons",
+    "coupondunia_slug": "and-fashion",
+    "website": "https://www.andindia.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Nicobar",
+    "category": "fashion",
+    "grabon_slug": "nicobar-coupons",
+    "coupondunia_slug": "nicobar",
+    "website": "https://www.nicobar.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "The Summer House",
+    "category": "fashion",
+    "grabon_slug": "the-summer-house-coupons",
+    "coupondunia_slug": "the-summer-house",
+    "website": "https://www.thesummerhouse.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Lovebirds",
+    "category": "fashion",
+    "grabon_slug": "lovebirds-coupons",
+    "coupondunia_slug": "lovebirds",
+    "website": "https://www.lovebirds.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Snitch",
+    "category": "fashion",
+    "grabon_slug": "snitch-coupons",
+    "coupondunia_slug": "snitch",
+    "website": "https://www.snitch.co.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Vero Moda",
+    "category": "fashion",
+    "grabon_slug": "vero-moda-coupons",
+    "coupondunia_slug": "vero-moda",
+    "website": "https://www.veromoda.in",
+    "offers_path": "/sale"
+  },
+  {
+    "brand": "Soup by Sougat Paul",
+    "category": "fashion",
+    "grabon_slug": "soup-by-sougat-paul-coupons",
+    "coupondunia_slug": "soup-by-sougat-paul",
+    "website": "https://www.sougatsoup.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "The Dopamine Store",
+    "category": "fashion",
+    "grabon_slug": "the-dopamine-store-coupons",
+    "coupondunia_slug": "the-dopamine-store",
+    "website": "https://thedopaminestore.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Label Ritu Kumar",
+    "category": "fashion",
+    "grabon_slug": "label-ritu-kumar-coupons",
+    "coupondunia_slug": "label-ritu-kumar",
+    "website": "https://www.labelritukumar.com",
+    "offers_path": "/sale"
+  },
+  {
+    "brand": "Global Desi",
+    "category": "fashion",
+    "grabon_slug": "global-desi-coupons",
+    "coupondunia_slug": "global-desi",
+    "website": "https://www.global-desi.com",
+    "offers_path": "/sale"
+  },
+  {
+    "brand": "Okhai",
+    "category": "fashion",
+    "grabon_slug": "okhai-coupons",
+    "coupondunia_slug": "okhai",
+    "website": "https://www.okhai.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Blissclub",
+    "category": "fashion",
+    "grabon_slug": "blissclub-coupons",
+    "coupondunia_slug": "blissclub",
+    "website": "https://www.blissclub.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "5 Feet 11",
+    "category": "fashion",
+    "grabon_slug": "5-feet-11-coupons",
+    "coupondunia_slug": "5-feet-11",
+    "website": "https://www.5feet11.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Whattheflex",
+    "category": "fashion",
+    "grabon_slug": "whattheflex-coupons",
+    "coupondunia_slug": "whattheflex",
+    "website": "https://www.whattheflex.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Crepdogcrew",
+    "category": "fashion",
+    "grabon_slug": "crepdogcrew-coupons",
+    "coupondunia_slug": "crepdogcrew",
+    "website": "https://www.crepdogcrew.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Culturecircle",
+    "category": "fashion",
+    "grabon_slug": "culturecircle-coupons",
+    "coupondunia_slug": "culturecircle",
+    "website": "https://www.culturecircle.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Shopfootball",
+    "category": "fashion",
+    "grabon_slug": "shopfootball-coupons",
+    "coupondunia_slug": "shopfootball",
+    "website": "https://www.shopfootball.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Hopepunk",
+    "category": "fashion",
+    "grabon_slug": "hopepunk-coupons",
+    "coupondunia_slug": "hopepunk",
+    "website": "https://www.hopepunk.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Hamptons Official",
+    "category": "fashion",
+    "grabon_slug": "hamptons-official-coupons",
+    "coupondunia_slug": "hamptons-official",
+    "website": "https://www.hamptonsofficial.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "The Forbidden Fruit",
+    "category": "fashion",
+    "grabon_slug": "the-forbidden-fruit-coupons",
+    "coupondunia_slug": "the-forbidden-fruit",
+    "website": "https://www.theforbiddenfruit.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Kimirica",
+    "category": "grooming",
+    "grabon_slug": "kimirica-coupons",
+    "coupondunia_slug": "kimirica",
+    "website": "https://www.kimirica.com",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "The Body Shop",
+    "category": "grooming",
+    "grabon_slug": "the-body-shop-coupons",
+    "coupondunia_slug": "the-body-shop",
+    "website": "https://www.thebodyshop.com/en-in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "The Face Shop",
+    "category": "grooming",
+    "grabon_slug": "the-face-shop-coupons",
+    "coupondunia_slug": "the-face-shop",
+    "website": "https://www.thefaceshop.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Mirabelle Korea",
+    "category": "grooming",
+    "grabon_slug": "mirabelle-coupons",
+    "coupondunia_slug": "mirabelle",
+    "website": "https://www.mirabelle.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Quench",
+    "category": "grooming",
+    "grabon_slug": "quench-botanics-coupons",
+    "coupondunia_slug": "quench-botanics",
+    "website": "https://www.quenchbotanics.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Sebamed",
+    "category": "grooming",
+    "grabon_slug": "sebamed-coupons",
+    "coupondunia_slug": "sebamed",
+    "website": "https://www.sebamed.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Cetaphil",
+    "category": "grooming",
+    "grabon_slug": "cetaphil-coupons",
+    "coupondunia_slug": "cetaphil",
+    "website": "https://www.cetaphil.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Plum",
+    "category": "grooming",
+    "grabon_slug": "plum-goodness-coupons",
+    "coupondunia_slug": "plum-goodness",
+    "website": "https://www.plumgoodness.com",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Forest Essentials",
+    "category": "grooming",
+    "grabon_slug": "forest-essentials-coupons",
+    "coupondunia_slug": "forest-essentials",
+    "website": "https://www.forestessentialsindia.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Clayco",
+    "category": "grooming",
+    "grabon_slug": "clayco-coupons",
+    "coupondunia_slug": "clayco",
+    "website": "https://www.clayco.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Re'equil",
+    "category": "grooming",
+    "grabon_slug": "reequil-coupons",
+    "coupondunia_slug": "reequil",
+    "website": "https://www.reequil.com",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Loreal Professional",
+    "category": "grooming",
+    "grabon_slug": "loreal-professional-coupons",
+    "coupondunia_slug": "loreal-professional",
+    "website": "https://www.lorealprofessionnel.co.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Zouk",
+    "category": "handbags",
+    "grabon_slug": "zouk-coupons",
+    "coupondunia_slug": "zouk",
+    "website": "https://www.zouk.co.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Lavie",
+    "category": "handbags",
+    "grabon_slug": "lavie-coupons",
+    "coupondunia_slug": "lavie",
+    "website": "https://www.lavie.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Ecoright",
+    "category": "handbags",
+    "grabon_slug": "ecoright-coupons",
+    "coupondunia_slug": "ecoright",
+    "website": "https://www.ecoright.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Mirragio",
+    "category": "handbags",
+    "grabon_slug": "mirragio-coupons",
+    "coupondunia_slug": "mirragio",
+    "website": "https://www.mirragio.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Teal by Chumbak",
+    "category": "handbags",
+    "grabon_slug": "chumbak-coupons",
+    "coupondunia_slug": "chumbak",
+    "website": "https://www.chumbak.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Caprese",
+    "category": "handbags",
+    "grabon_slug": "caprese-coupons",
+    "coupondunia_slug": "caprese",
+    "website": "https://www.capreseworld.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Baggit",
+    "category": "handbags",
+    "grabon_slug": "baggit-coupons",
+    "coupondunia_slug": "baggit",
+    "website": "https://www.baggit.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "DailyObjects",
+    "category": "handbags",
+    "grabon_slug": "dailyobjects-coupons",
+    "coupondunia_slug": "dailyobjects",
+    "website": "https://www.dailyobjects.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Nappa Dori",
+    "category": "handbags",
+    "grabon_slug": "nappa-dori-coupons",
+    "coupondunia_slug": "nappa-dori",
+    "website": "https://www.nappadori.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Mokobara",
+    "category": "handbags",
+    "grabon_slug": "mokobara-coupons",
+    "coupondunia_slug": "mokobara",
+    "website": "https://www.mokobara.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Uppercase",
+    "category": "handbags",
+    "grabon_slug": "uppercase-coupons",
+    "coupondunia_slug": "uppercase",
+    "website": "https://www.uppercase.co",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Lakme",
+    "category": "cosmetics",
+    "grabon_slug": "lakme-coupons",
+    "coupondunia_slug": "lakme",
+    "website": "https://www.lakmeindia.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "MyGlamm",
+    "category": "cosmetics",
+    "grabon_slug": "myglamm-coupons",
+    "coupondunia_slug": "myglamm",
+    "website": "https://www.myglamm.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Sugar Cosmetics",
+    "category": "cosmetics",
+    "grabon_slug": "sugar-cosmetics-coupons",
+    "coupondunia_slug": "sugar-cosmetics",
+    "website": "https://in.sugarcosmetics.com",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Maybelline",
+    "category": "cosmetics",
+    "grabon_slug": "maybelline-coupons",
+    "coupondunia_slug": "maybelline",
+    "website": "https://www.maybelline.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Gush Beauty",
+    "category": "cosmetics",
+    "grabon_slug": "gush-beauty-coupons",
+    "coupondunia_slug": "gush-beauty",
+    "website": "https://www.gushbeauty.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Blue Heaven",
+    "category": "cosmetics",
+    "grabon_slug": "blue-heaven-coupons",
+    "coupondunia_slug": "blue-heaven",
+    "website": "https://www.blueheavencosmetics.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Mars Cosmetics",
+    "category": "cosmetics",
+    "grabon_slug": "mars-cosmetics-coupons",
+    "coupondunia_slug": "mars-cosmetics",
+    "website": "https://www.marscosmetics.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Swiss Beauty",
+    "category": "cosmetics",
+    "grabon_slug": "swiss-beauty-coupons",
+    "coupondunia_slug": "swiss-beauty",
+    "website": "https://www.swissbeauty.in",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Kiro",
+    "category": "cosmetics",
+    "grabon_slug": "kiro-beauty-coupons",
+    "coupondunia_slug": "kiro-beauty",
+    "website": "https://www.kirobeauty.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Pilgrim",
+    "category": "cosmetics",
+    "grabon_slug": "pilgrim-coupons",
+    "coupondunia_slug": "pilgrim",
+    "website": "https://www.pilgrim.website",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Faces Canada",
+    "category": "cosmetics",
+    "grabon_slug": "faces-canada-coupons",
+    "coupondunia_slug": "faces-canada",
+    "website": "https://www.facescanada.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "MAC",
+    "category": "cosmetics",
+    "grabon_slug": "mac-cosmetics-coupons",
+    "coupondunia_slug": "mac-cosmetics",
+    "website": "https://www.maccosmetics.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Lovechild",
+    "category": "cosmetics",
+    "grabon_slug": "lovechild-masaba-coupons",
+    "coupondunia_slug": "lovechild-masaba",
+    "website": "https://www.lovechildmasaba.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Carlton London",
+    "category": "perfumes",
+    "grabon_slug": "carlton-london-coupons",
+    "coupondunia_slug": "carlton-london",
+    "website": "https://www.carltonlondon.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Plum Luxe",
+    "category": "perfumes",
+    "grabon_slug": "plum-luxe-coupons",
+    "coupondunia_slug": "plum-luxe",
+    "website": "https://www.plumluxe.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Wow Skin",
+    "category": "perfumes",
+    "grabon_slug": "wow-skin-science-coupons",
+    "coupondunia_slug": "wow-skin-science",
+    "website": "https://www.buywow.in",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Bella Vita",
+    "category": "perfumes",
+    "grabon_slug": "bella-vita-organic-coupons",
+    "coupondunia_slug": "bella-vita-organic",
+    "website": "https://www.bellavitaorganic.com",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Bombay Perfumery",
+    "category": "perfumes",
+    "grabon_slug": "bombay-perfumery-coupons",
+    "coupondunia_slug": "bombay-perfumery",
+    "website": "https://www.bombayperfumery.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Scent Theory",
+    "category": "perfumes",
+    "grabon_slug": "scent-theory-coupons",
+    "coupondunia_slug": "scent-theory",
+    "website": "https://www.scenttheory.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "House of EM5",
+    "category": "perfumes",
+    "grabon_slug": "house-of-em5-coupons",
+    "coupondunia_slug": "house-of-em5",
+    "website": "https://www.houseofem5.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Villain",
+    "category": "perfumes",
+    "grabon_slug": "villain-coupons",
+    "coupondunia_slug": "villain",
+    "website": "https://www.villain.in",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Layer'r",
+    "category": "perfumes",
+    "grabon_slug": "layerr-coupons",
+    "coupondunia_slug": "layerr",
+    "website": "https://www.layerr.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Fraganote",
+    "category": "perfumes",
+    "grabon_slug": "fraganote-coupons",
+    "coupondunia_slug": "fraganote",
+    "website": "https://www.fraganote.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Perfume Network",
+    "category": "perfumes",
+    "grabon_slug": "perfume-network-coupons",
+    "coupondunia_slug": "perfume-network",
+    "website": "https://www.perfumenetwork.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Giva",
+    "category": "jewellery",
+    "grabon_slug": "giva-coupons",
+    "coupondunia_slug": "giva",
+    "website": "https://www.giva.co",
+    "offers_path": "/pages/offers"
+  },
+  {
+    "brand": "Clara",
+    "category": "jewellery",
+    "grabon_slug": "clara-coupons",
+    "coupondunia_slug": "clara",
+    "website": "https://www.clara.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Voylla",
+    "category": "jewellery",
+    "grabon_slug": "voylla-coupons",
+    "coupondunia_slug": "voylla",
+    "website": "https://www.voylla.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "You Bella",
+    "category": "jewellery",
+    "grabon_slug": "you-bella-coupons",
+    "coupondunia_slug": "you-bella",
+    "website": "https://www.youbella.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Minutiae",
+    "category": "jewellery",
+    "grabon_slug": "minutiae-coupons",
+    "coupondunia_slug": "minutiae",
+    "website": "https://www.minutiae.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "I Jewels",
+    "category": "jewellery",
+    "grabon_slug": "i-jewels-coupons",
+    "coupondunia_slug": "i-jewels",
+    "website": "https://www.ijewels.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Priyaasi",
+    "category": "jewellery",
+    "grabon_slug": "priyaasi-coupons",
+    "coupondunia_slug": "priyaasi",
+    "website": "https://www.priyaasi.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Palmonas",
+    "category": "jewellery",
+    "grabon_slug": "palmonas-coupons",
+    "coupondunia_slug": "palmonas",
+    "website": "https://www.palmonas.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Zeneme",
+    "category": "jewellery",
+    "grabon_slug": "zeneme-coupons",
+    "coupondunia_slug": "zeneme",
+    "website": "https://www.zeneme.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Karatcart",
+    "category": "jewellery",
+    "grabon_slug": "karatcart-coupons",
+    "coupondunia_slug": "karatcart",
+    "website": "https://www.karatcart.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Just Lil Things",
+    "category": "jewellery",
+    "grabon_slug": "just-lil-things-coupons",
+    "coupondunia_slug": "just-lil-things",
+    "website": "https://www.justlilthings.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Teejh",
+    "category": "jewellery",
+    "grabon_slug": "teejh-coupons",
+    "coupondunia_slug": "teejh",
+    "website": "https://www.teejh.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Estelle",
+    "category": "jewellery",
+    "grabon_slug": "estelle-coupons",
+    "coupondunia_slug": "estelle",
+    "website": "https://www.estellejewellery.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Melorra",
+    "category": "jewellery",
+    "grabon_slug": "melorra-coupons",
+    "coupondunia_slug": "melorra",
+    "website": "https://www.melorra.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "CaratLane",
+    "category": "jewellery",
+    "grabon_slug": "caratlane-coupons",
+    "coupondunia_slug": "caratlane",
+    "website": "https://www.caratlane.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Misho",
+    "category": "jewellery",
+    "grabon_slug": "misho-coupons",
+    "coupondunia_slug": "misho",
+    "website": "https://www.mishodesigns.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Outhouse Jewellery",
+    "category": "jewellery",
+    "grabon_slug": "outhouse-jewellery-coupons",
+    "coupondunia_slug": "outhouse-jewellery",
+    "website": "https://www.outhousejewellery.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Bluestone",
+    "category": "jewellery",
+    "grabon_slug": "bluestone-coupons",
+    "coupondunia_slug": "bluestone",
+    "website": "https://www.bluestone.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Paisley Pop",
+    "category": "jewellery",
+    "grabon_slug": "paisley-pop-coupons",
+    "coupondunia_slug": "paisley-pop",
+    "website": "https://www.paisleypop.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Wellbeing Nutrition",
+    "category": "wellness",
+    "grabon_slug": "wellbeing-nutrition-coupons",
+    "coupondunia_slug": "wellbeing-nutrition",
+    "website": "https://www.wellbeingnutrition.com",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Oziva",
+    "category": "wellness",
+    "grabon_slug": "oziva-coupons",
+    "coupondunia_slug": "oziva",
+    "website": "https://www.oziva.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "The Whole Truth",
+    "category": "wellness",
+    "grabon_slug": "the-whole-truth-coupons",
+    "coupondunia_slug": "the-whole-truth",
+    "website": "https://www.thewholetruth.in",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Yogabar",
+    "category": "wellness",
+    "grabon_slug": "yogabar-coupons",
+    "coupondunia_slug": "yogabar",
+    "website": "https://www.yogabar.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Superyou",
+    "category": "wellness",
+    "grabon_slug": "superyou-coupons",
+    "coupondunia_slug": "superyou",
+    "website": "https://www.superyou.co.in",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Headspace India",
+    "category": "wellness",
+    "grabon_slug": "headspace-coupons",
+    "coupondunia_slug": "headspace",
+    "website": "https://www.headspace.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "BookMyShow",
+    "category": "experiences",
+    "grabon_slug": "bookmyshow-coupons",
+    "coupondunia_slug": "bookmyshow",
+    "website": "https://www.bookmyshow.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Headout",
+    "category": "experiences",
+    "grabon_slug": "headout-coupons",
+    "coupondunia_slug": "headout",
+    "website": "https://www.headout.com",
+    "offers_path": "/coupons"
+  },
+  {
+    "brand": "Thrillophilia",
+    "category": "experiences",
+    "grabon_slug": "thrillophilia-coupons",
+    "coupondunia_slug": "thrillophilia",
+    "website": "https://www.thrillophilia.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "The Pottery Studio",
+    "category": "experiences",
+    "grabon_slug": "the-pottery-studio-coupons",
+    "coupondunia_slug": "the-pottery-studio",
+    "website": "https://www.thepotterystudio.in",
+    "offers_path": "/"
+  },
+  {
+    "brand": "Drunken Palette",
+    "category": "experiences",
+    "grabon_slug": "drunken-palette-coupons",
+    "coupondunia_slug": "drunken-palette",
+    "website": "https://www.drunkenpalette.in",
+    "offers_path": "/"
+  },
+  {
+    "brand": "Claymade",
+    "category": "experiences",
+    "grabon_slug": "claymade-coupons",
+    "coupondunia_slug": "claymade",
+    "website": "https://www.claymade.in",
+    "offers_path": "/"
+  },
+  {
+    "brand": "Winni",
+    "category": "gifting",
+    "grabon_slug": "winni-coupons",
+    "coupondunia_slug": "winni",
+    "website": "https://www.winni.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Zwende",
+    "category": "gifting",
+    "grabon_slug": "zwende-coupons",
+    "coupondunia_slug": "zwende",
+    "website": "https://www.zwende.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Ferns N Petals",
+    "category": "gifting",
+    "grabon_slug": "ferns-n-petals-coupons",
+    "coupondunia_slug": "ferns-n-petals",
+    "website": "https://www.fnp.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "The Wishing Chair",
+    "category": "gifting",
+    "grabon_slug": "the-wishing-chair-coupons",
+    "coupondunia_slug": "the-wishing-chair",
+    "website": "https://www.thewishingchair.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "IGP",
+    "category": "gifting",
+    "grabon_slug": "igp-coupons",
+    "coupondunia_slug": "igp",
+    "website": "https://www.igp.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Unhurry",
+    "category": "gifting",
+    "grabon_slug": "unhurry-coupons",
+    "coupondunia_slug": "unhurry",
+    "website": "https://www.unhurry.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "The Postbox",
+    "category": "gifting",
+    "grabon_slug": "the-postbox-coupons",
+    "coupondunia_slug": "the-postbox",
+    "website": "https://www.thepostbox.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Durex India",
+    "category": "intimacy",
+    "grabon_slug": "durex-coupons",
+    "coupondunia_slug": "durex",
+    "website": "https://www.durex.com/en-in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "That Sassy Thing",
+    "category": "intimacy",
+    "grabon_slug": "that-sassy-thing-coupons",
+    "coupondunia_slug": "that-sassy-thing",
+    "website": "https://www.thatsassything.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Amorelie India",
+    "category": "intimacy",
+    "grabon_slug": "amorelie-coupons",
+    "coupondunia_slug": "amorelie",
+    "website": "https://www.amorelie.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Pepper by Nua",
+    "category": "intimacy",
+    "grabon_slug": "pepper-by-nua-coupons",
+    "coupondunia_slug": "pepper-by-nua",
+    "website": "https://www.nua.health",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "BBLUNT",
+    "category": "grooming",
+    "grabon_slug": "bblunt-coupons",
+    "coupondunia_slug": "bblunt",
+    "website": "https://www.bblunt.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Purplle",
+    "category": "cosmetics",
+    "grabon_slug": "purplle-coupons",
+    "coupondunia_slug": "purplle",
+    "website": "https://www.purplle.com",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Blur Cosmetics",
+    "category": "cosmetics",
+    "grabon_slug": "blur-cosmetics-coupons",
+    "coupondunia_slug": "blur-cosmetics",
+    "website": "https://www.blurcosmetics.in",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Aqualogica",
+    "category": "grooming",
+    "grabon_slug": "aqualogica-coupons",
+    "coupondunia_slug": "aqualogica",
+    "website": "https://www.aqualogica.in",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Urban Monkey",
+    "category": "fashion",
+    "grabon_slug": "urban-monkey-coupons",
+    "coupondunia_slug": "urban-monkey",
+    "website": "https://www.urbanmonkey.com",
+    "offers_path": "/collections/sale"
+  },
+  {
+    "brand": "Minimalist",
+    "category": "grooming",
+    "grabon_slug": "minimalist-coupons",
+    "coupondunia_slug": "minimalist",
+    "website": "https://www.beminimalist.co",
+    "offers_path": "/collections/offers"
+  },
+  {
+    "brand": "Mamaearth",
+    "category": "grooming",
+    "grabon_slug": "mamaearth-coupons",
+    "coupondunia_slug": "mamaearth",
+    "website": "https://www.mamaearth.in",
+    "offers_path": "/offers"
+  },
+  {
+    "brand": "Dot & Key",
+    "category": "grooming",
+    "grabon_slug": "dot-and-key-coupons",
+    "coupondunia_slug": "dot-and-key",
+    "website": "https://www.dotandkey.com",
+    "offers_path": "/collections/offers"
+  }
+]
