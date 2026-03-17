@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-03-16T17:25:38.372529+05:30Z",
+  "total_coupons": 1,
+  "brands_scraped": 1,
+  "coupons": [
+    {
+      "brand": "Giva",
+      "category": "jewellery",
+      "code": null,
+      "discount": "Discount offer",
+      "expiry": null,
+      "source": "coupondunia.in",
+      "source_url": "https://www.coupondunia.in/giva",
+      "confidence": "unverified",
+      "scraped_at": "2026-03-16T17:25:35.710048+05:30Z"
+    }
+  ]
+}

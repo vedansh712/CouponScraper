@@ -114,32 +114,110 @@ def polite_sleep():
 #     return None
 
 
-browser = None
+# ─────────────────────────────────────────────
+#  PLAYWRIGHT BROWSER MANAGER
+#  Single browser instance reused across all scrapes.
+#  Keeps memory low and avoids re-launching Chrome for every brand.
+# ─────────────────────────────────────────────
 
-def safe_get(url: str):
+_playwright_instance = None
+_browser_instance    = None
 
-    global browser
+def get_browser():
+    """
+    Lazily launch Playwright + Chromium once and reuse for the whole run.
+    Call shutdown_browser() at the end of main() to clean up.
+    """
+    global _playwright_instance, _browser_instance
+    if _browser_instance is None:
+        _playwright_instance = sync_playwright().start()
+        _browser_instance = _playwright_instance.chromium.launch(
+            headless=True,
+            args=[
+                "--no-sandbox",
+                "--disable-blink-features=AutomationControlled",  # reduces bot detection
+            ],
+        )
+        log.info("Playwright browser launched.")
+    return _browser_instance
 
-    if browser is None:
-        playwright = sync_playwright().start()
-        browser = playwright.chromium.launch(headless=True)
 
-    page = browser.new_page()
+def shutdown_browser():
+    """Call once at the end of the script to cleanly close the browser."""
+    global _playwright_instance, _browser_instance
+    if _browser_instance:
+        _browser_instance.close()
+        _browser_instance = None
+    if _playwright_instance:
+        _playwright_instance.stop()
+        _playwright_instance = None
+    log.info("Browser closed.")
+
+
+def get_page_with_clicks(url: str, click_selector: str = None, debug_html_path: str = None):
+    """
+    Open a URL with Playwright, optionally click all matching elements
+    (e.g. 'Reveal Code' buttons), wait for JS to settle, then return
+    a BeautifulSoup of the final DOM.
+
+    Args:
+        url:              The URL to fetch.
+        click_selector:   CSS selector of buttons to click (e.g. reveal-code buttons).
+                          If None, no clicking is done.
+        debug_html_path:  If set, save the raw HTML to this path for inspection.
+
+    Returns:
+        BeautifulSoup object or None on failure.
+    """
+    browser = get_browser()
+    page = browser.new_page(
+        user_agent=random.choice(USER_AGENTS),
+        locale="en-IN",
+    )
 
     try:
-        page.goto(url, timeout=30000)
+        page.goto(url, timeout=30000, wait_until="domcontentloaded")
 
-        page.wait_for_load_state("networkidle")
+        # Wait for the JS framework to render content
+        page.wait_for_load_state("networkidle", timeout=15000)
+
+        # ── CLICK TO REVEAL ──────────────────────────────────────
+        # Both GrabOn and CouponDunia hide coupon codes behind a
+        # "Get Code" / "Reveal" button. We click ALL of them so
+        # the codes appear in the DOM before we read the HTML.
+        if click_selector:
+            try:
+                buttons = page.query_selector_all(click_selector)
+                log.debug(f"  Found {len(buttons)} reveal buttons at {url}")
+                for btn in buttons[:10]:   # cap at 10 to avoid infinite loops
+                    try:
+                        btn.click(timeout=3000)
+                        page.wait_for_timeout(400)   # give JS time to update DOM
+                    except Exception:
+                        pass   # button might be outside viewport / stale — skip it
+            except Exception as e:
+                log.debug(f"  Click step skipped: {e}")
+
+        # Final short wait after all clicks
+        page.wait_for_timeout(800)
 
         html = page.content()
 
-        page.close()
+        # ── DEBUG: dump raw HTML so you can inspect selectors ────
+        if debug_html_path:
+            with open(debug_html_path, "w", encoding="utf-8") as f:
+                f.write(html)
+            log.info(f"  [DEBUG] HTML saved → {debug_html_path}")
 
+        page.close()
         return BeautifulSoup(html, "html.parser")
 
     except Exception as e:
         log.warning(f"Playwright error: {url} → {e}")
-        page.close()
+        try:
+            page.close()
+        except Exception:
+            pass
         return None
 
 def strip_json_comments(text: str) -> str:
@@ -212,41 +290,59 @@ def score_confidence(coupon: dict, seen_brands: dict) -> str:
 
 # ─────────────────────────────────────────────
 #  MODULE 1 — GRABON SCRAPER
+#
+#  GrabOn HTML notes (as of 2025-2026):
+#  - Coupon cards live inside  div.coupon-box  or  div.clp-coupon
+#  - Coupon title is in        div.coupon-title  or  p.title
+#  - The CODE is hidden initially.  The reveal button is  .cbtn  or
+#    a[class*="get-code"].  After clicking, the code appears in
+#    span.coupon-code  or  input[class*="code"].
+#  - Expiry is in              span.validity  or  span[class*="valid"]
+#
+#  HOW TO FIND THE RIGHT SELECTORS YOURSELF:
+#    1. Run: python scraper.py --brand "Giva" --debug-html grabon_giva.html
+#    2. Open grabon_giva.html in a browser
+#    3. Inspect the coupon card element → copy its class name
+#    4. Add it at the TOP of the selector lists below
 # ─────────────────────────────────────────────
 
-# GRABON_BASE = "https://www.grabon.in/indiastore"
 GRABON_BASE = "https://www.grabon.in"
 
-# CSS selector candidates — GrabOn updates their HTML periodically.
-# The scraper tries each in order and uses the first that matches.
+# ── GrabOn: NO click needed ─────────────────────────────────────────
+# The code is already in span.visible-lg in the initial HTML.
+# The "Get Code" button only copies to clipboard — we don't need to click it.
+GRABON_REVEAL_BTN = None   # skip click step entirely
+
+# ── VERIFIED selectors — inspected from real DOM (Mar 2026) ─────────
+#
+#  <div class="gc-box" id="cpn_XXXXXX">         ← CARD
+#    <div class="gcbr">
+#      <p>Flat Rs 500 OFF on Orders Above Rs 1499</p>  ← TITLE (first <p>, no class)
+#      <div class="gcbr-r">
+#        <span class="cbtn">
+#          <span class="visible-lg">SWEET500</span>    ← CODE (already in DOM ✅)
+#        </span>
+#      </div>
+#    </div>
+#    <ul class="veri">
+#      <li class="visible-lg c-clk">Valid till 31st Mar, 26</li>  ← EXPIRY ✅
+#    </ul>
+#  </div>
+
 GRABON_SELECTORS = {
     "coupon_card": [
-        "div.coupon-box",
-        "div.g-coupon-wrap",
-        "div.coupons-list-item",
-        "li.coupon-item",
-        "div[class*='coupon']",
+        "div.gc-box",                  # ✅ CONFIRMED real card container
     ],
     "code": [
-        ".cbtn .visible-lg",
-        "span.coupon-code",
-        "span[class*='code']",
-        "div.code-holder span",
-        "[data-coupon-code]",
+        "span.cbtn span.visible-lg",   # ✅ CONFIRMED — most specific, avoids "Verified" span
+        "span.cbtn .visible-lg",       # fallback
     ],
     "discount": [
-        "div.coupon-title",
-        "h3.offer-title",
-        "p.offer-desc",
-        "div[class*='title']",
-        "span[class*='offer']",
+        "div.gcbr > p",                # ✅ CONFIRMED — first direct <p> child of gcbr
+        "div.gcbr p",                  # broader fallback
     ],
     "expiry": [
-        "span.valid-date",
-        "span[class*='valid']",
-        "span[class*='expiry']",
-        "div[class*='expire']",
-        "p[class*='valid']",
+        "li.c-clk",                    # ✅ CONFIRMED — "Valid till 31st Mar, 26"
     ],
 }
 
@@ -308,27 +404,36 @@ def parse_expiry(raw_text: Optional[str]) -> Optional[str]:
     return cleaned if len(cleaned) < 30 else None
 
 
-def scrape_grabon(brand_config: dict) -> list[dict]:
+def scrape_grabon(brand_config: dict, debug: bool = False) -> list[dict]:
     """Scrape coupon codes for a brand from GrabOn."""
-    slug   = brand_config["grabon_slug"]
-    url = f"{GRABON_BASE}/{slug}/"
-    brand  = brand_config["brand"]
-    cat    = brand_config["category"]
+    slug  = brand_config["grabon_slug"]
+    url   = f"{GRABON_BASE}/{slug}/"
+    brand = brand_config["brand"]
+    cat   = brand_config["category"]
+
+    debug_path = f"debug_grabon_{brand.lower().replace(' ', '_')}.html" if debug else None
 
     log.info(f"  [GrabOn] {brand} → {url}")
-    soup = safe_get(url)
+
+    # ── Use click-aware loader so reveal buttons get triggered ──────
+    soup = get_page_with_clicks(
+        url,
+        click_selector=GRABON_REVEAL_BTN,
+        debug_html_path=debug_path,
+    )
     if not soup:
         log.debug(f"  [GrabOn] No page for {brand}")
         return []
 
     polite_sleep()
-
     coupons = []
+
+    # ── Try card-level parsing first ────────────────────────────────
     cards = _find_all_first_match(soup, GRABON_SELECTORS["coupon_card"])
 
     if not cards:
-        log.debug(f"  [GrabOn] No coupon cards found for {brand}")
-        # Still try to get sitewide banner text as a no-code deal
+        log.debug(f"  [GrabOn] No coupon cards found for {brand} — trying page-level fallback")
+        # Grab whatever title/heading text is on the page as a no-code sitewide deal
         discount_text = _first_match(soup, GRABON_SELECTORS["discount"])
         if discount_text:
             coupons.append(make_coupon(
@@ -339,33 +444,48 @@ def scrape_grabon(brand_config: dict) -> list[dict]:
             ))
         return coupons
 
+    # Cards with data-type="cp" are actual coupon codes.
+    # Cards with data-type="deal" are sitewide deals (no code).
+    # Filter so we don't mix them up.
     for card in cards:
-        # Try to get the coupon code
-        code = _first_match(card, GRABON_SELECTORS["code"])
-        if not code:
-            # Some GrabOn codes live in data attributes
-            code_el = card.select_one("[data-coupon-code], [data-clipboard-text]")
-            if code_el:
-                code = (
-                    code_el.get("data-coupon-code")
-                    or code_el.get("data-clipboard-text", "")
-                ).strip()
+        card_type = card.get("data-type", "cp")   # "cp" = coupon, "deal" = no-code deal
 
-        discount = _first_match(card, GRABON_SELECTORS["discount"]) or "Discount offer"
-        expiry   = parse_expiry(_first_match(card, GRABON_SELECTORS["expiry"]))
+        code = None
+        if card_type == "cp":
+            # ── Extract code from span.cbtn > span.visible-lg ────────────
+            # span.visible-lg appears 3 times in a card:
+            #   1. inside <p class="visible-lg"> → "Verified" text (skip)
+            #   2. inside span.cbtn → THE ACTUAL CODE  ✅
+            #   3. inside div.visible-lg → "SHOW COUPON CODE" text (skip)
+            # Using "span.cbtn span.visible-lg" targets only #2.
+            cbtn = card.select_one("span.cbtn")
+            if cbtn:
+                code_el = cbtn.select_one("span.visible-lg")
+                if code_el:
+                    raw = code_el.get_text(strip=True)
+                    # Reject non-code strings
+                    if raw and raw not in {"SHOW COUPON CODE", "GET CODE", "REVEAL CODE", ""}:
+                        code = raw
 
-        # Skip obviously bad entries
-        if not discount or len(discount) < 3:
+        discount = _first_match(card, GRABON_SELECTORS["discount"]) or ""
+        expiry_raw = _first_match(card, GRABON_SELECTORS["expiry"]) or ""
+        expiry = parse_expiry(expiry_raw)
+
+        # Skip entries with no meaningful discount text
+        if not discount or len(discount) < 4:
             continue
+
+        # Determine confidence — cards with an expiry are more trustworthy
+        conf = "verified" if expiry else "unverified"
 
         coupons.append(make_coupon(
             brand=brand, category=cat,
-            code=code if code else None,
+            code=code,
             discount=discount,
             expiry=expiry,
             source="grabon.in",
             source_url=url,
-            confidence="unverified",  # will be re-scored later
+            confidence=conf,
         ))
 
     log.info(f"  [GrabOn] Found {len(coupons)} coupons for {brand}")
@@ -374,78 +494,165 @@ def scrape_grabon(brand_config: dict) -> list[dict]:
 
 # ─────────────────────────────────────────────
 #  MODULE 2 — COUPONDUNIA SCRAPER
+#
+#  CouponDunia HTML notes (as of 2025-2026):
+#  CouponDunia is a Next.js app.  Class names MAY be hashed (e.g. "abc123")
+#  so class-based selectors are fragile.  Prefer:
+#    - data-testid attributes (stable across deploys)
+#    - semantic tags (article, section)
+#    - aria labels
+#  The coupon code is stored in a data attribute on the reveal button
+#  BEFORE the click, so we can extract it without needing a real click.
+#  Common attribute names: data-coupon-code, data-code, data-val
+#
+#  HOW TO FIND THE RIGHT SELECTORS YOURSELF:
+#    1. Run: python scraper.py --brand "Giva" --debug-html cd_giva.html
+#    2. Open cd_giva.html  →  Ctrl+F for "GIVA" or the known code
+#    3. Look at the surrounding element's tag and attributes
+#    4. Add a stable selector at the TOP of the lists below
 # ─────────────────────────────────────────────
 
 COUPONDUNIA_BASE = "https://www.coupondunia.in"
 
+# The reveal button selector — click it to expose the code in the DOM
+COUPONDUNIA_REVEAL_BTN = (
+    "button[class*='reveal'], "
+    "button[class*='get-code'], "
+    "a[class*='get-code'], "
+    "button[class*='show-code'], "
+    "span[class*='reveal-code']"
+)
+
 COUPONDUNIA_SELECTORS = {
     "coupon_card": [
-        "div.card",
+        # Stable structural selectors first
+        "article",
+        "div[data-testid*='coupon']",
+        "div[data-testid*='offer']",
+        "section[data-testid*='coupon']",
+        # Class-based fallbacks
         "div.offer-card",
-        "div.coupon-container",
+        "div[class*='CouponCard']",
+        "div[class*='coupon-card']",
+        "div[class*='offer-card']",
         "li.offer",
         "div[class*='coupon']",
-        "div[class*='offer']",
     ],
     "code": [
-        "span.coupon-code",
-        "span[class*='code']",
-        "button[class*='code']",
-        "div.code span",
+        # Data attributes are the most reliable — check these before CSS selectors
+        # (code is baked into data attr even before reveal click)
+        "[data-coupon-code]",
         "[data-code]",
+        "[data-val]",
+        "[data-clipboard-text]",
+        # Post-click CSS selectors
+        "span[class*='code']",
+        "p[class*='code']",
+        "div[class*='code'] span",
+        "button[class*='code'] span",
+        "input[class*='code']",
     ],
     "discount": [
-        "div.offer-heading",
-        "h3.offer-title",
-        "p.offer-description",
+        "h2",
+        "h3",
+        "p[class*='title']",
+        "div[class*='title']",
         "span[class*='title']",
-        "div[class*='description']",
+        "p[class*='heading']",
+        "div[class*='heading']",
+        "[data-testid*='title']",
+        "[data-testid*='heading']",
     ],
     "expiry": [
-        "span.expires",
         "span[class*='expir']",
-        "p[class*='valid']",
-        "div[class*='expiry']",
+        "p[class*='expir']",
+        "div[class*='expir']",
+        "span[class*='valid']",
+        "time",
+        "[data-testid*='expiry']",
+        "[data-testid*='valid']",
     ],
 }
 
 
-def scrape_coupondunia(brand_config: dict) -> list[dict]:
+def _extract_code_from_data_attrs(tag) -> str | None:
+    """
+    CouponDunia and GrabOn often embed the code as a data attribute
+    on the reveal button *before* it is clicked.
+    Try all common attribute names.
+    """
+    attrs_to_check = [
+        "data-coupon-code", "data-code", "data-val",
+        "data-clipboard-text", "data-clip", "data-value",
+        "data-coupon", "data-promo",
+    ]
+    # Check the element itself and all its children
+    candidates = [tag] + tag.find_all(True)
+    for el in candidates:
+        for attr in attrs_to_check:
+            val = el.get(attr, "").strip()
+            # A valid promo code: 3-25 chars, alphanumeric + maybe hyphen
+            if val and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9\-_]{2,24}", val):
+                return val.upper()
+    return None
+
+
+def scrape_coupondunia(brand_config: dict, debug: bool = False) -> list[dict]:
     """Scrape coupon codes for a brand from CouponDunia."""
-    slug   = brand_config["coupondunia_slug"]
-    url    = f"{COUPONDUNIA_BASE}/{slug}"
-    brand  = brand_config["brand"]
-    cat    = brand_config["category"]
+    slug  = brand_config["coupondunia_slug"]
+    url   = f"{COUPONDUNIA_BASE}/{slug}"
+    brand = brand_config["brand"]
+    cat   = brand_config["category"]
+
+    debug_path = f"debug_cd_{brand.lower().replace(' ', '_')}.html" if debug else None
 
     log.info(f"  [CouponDunia] {brand} → {url}")
-    soup = safe_get(url)
+
+    # Click reveal buttons so codes appear in the final DOM
+    soup = get_page_with_clicks(
+        url,
+        click_selector=COUPONDUNIA_REVEAL_BTN,
+        debug_html_path=debug_path,
+    )
     if not soup:
         log.debug(f"  [CouponDunia] No page for {brand}")
         return []
 
     polite_sleep()
-
     coupons = []
+
     cards = _find_all_first_match(soup, COUPONDUNIA_SELECTORS["coupon_card"])
 
     if not cards:
-        log.debug(f"  [CouponDunia] No cards for {brand}")
+        log.debug(f"  [CouponDunia] No cards found for {brand}")
         return coupons
 
     for card in cards:
-        code     = _first_match(card, COUPONDUNIA_SELECTORS["code"])
-        if not code:
-            code_el = card.select_one("[data-code], [data-coupon]")
-            if code_el:
-                code = (
-                    code_el.get("data-code")
-                    or code_el.get("data-coupon", "")
-                ).strip()
+        # 1. Try data attributes first (most reliable on CD)
+        code = _extract_code_from_data_attrs(card)
 
-        discount = _first_match(card, COUPONDUNIA_SELECTORS["discount"]) or "Discount offer"
+        # 2. Fallback to CSS selectors
+        if not code:
+            code = _first_match(card, COUPONDUNIA_SELECTORS["code"])
+
+        # 3. Pattern scan: anything that looks like a promo code in the card text
+        if not code:
+            card_text = card.get_text(" ", strip=True)
+            m = re.search(
+                r"\b([A-Z][A-Z0-9]{3,19})\b(?!\s*%)",   # caps+digits, not a percentage
+                card_text
+            )
+            if m:
+                candidate = m.group(1)
+                # filter out common false positives
+                if candidate not in {"HTTP", "HTML", "FREE", "SALE", "UPTO", "GRAB",
+                                     "DEAL", "CODE", "SHOP", "SAVE", "FLAT", "BEST"}:
+                    code = candidate
+
+        discount = _first_match(card, COUPONDUNIA_SELECTORS["discount"]) or ""
         expiry   = parse_expiry(_first_match(card, COUPONDUNIA_SELECTORS["expiry"]))
 
-        if not discount or len(discount) < 3:
+        if not discount or len(discount) < 4:
             continue
 
         coupons.append(make_coupon(
@@ -480,7 +687,7 @@ CODE_PATTERN = re.compile(
 )
 
 
-def scrape_brand_website(brand_config: dict) -> list[dict]:
+def scrape_brand_website(brand_config: dict, debug: bool = False) -> list[dict]:
     """
     Scrape the brand's own website for sitewide banners / offer pages.
     This is the most trustworthy source — codes here are almost always active.
@@ -500,7 +707,8 @@ def scrape_brand_website(brand_config: dict) -> list[dict]:
 
     for url in urls_to_try:
         log.info(f"  [Website] {brand} → {url}")
-        soup = safe_get(url)
+        debug_path = f"debug_web_{brand.lower().replace(' ', '_')}.html" if debug else None
+        soup = get_page_with_clicks(url, debug_html_path=debug_path)
         if not soup:
             polite_sleep()
             continue
@@ -665,7 +873,7 @@ def save_results(
 #  BRAND ORCHESTRATOR
 # ─────────────────────────────────────────────
 
-def scrape_brand(brand_config: dict) -> list[dict]:
+def scrape_brand(brand_config: dict, debug: bool = False) -> list[dict]:
     """
     Run all 3 scrapers for a single brand and return merged, deduped results.
     """
@@ -678,7 +886,7 @@ def scrape_brand(brand_config: dict) -> list[dict]:
 
     # 1 GrabOn
     try:
-        raw_coupons += scrape_grabon(brand_config)
+        raw_coupons += scrape_grabon(brand_config, debug=debug)
     except Exception as e:
         log.error(f"GrabOn error for {brand}: {e}")
 
@@ -688,7 +896,7 @@ def scrape_brand(brand_config: dict) -> list[dict]:
         polite_sleep()
 
         try:
-            raw_coupons += scrape_coupondunia(brand_config)
+            raw_coupons += scrape_coupondunia(brand_config, debug=debug)
         except Exception as e:
             log.error(f"CouponDunia error for {brand}: {e}")
 
@@ -741,6 +949,14 @@ def parse_args():
         "--config", type=str, default=BRANDS_CONFIG,
         help=f"Path to brands config JSON (default: {BRANDS_CONFIG})"
     )
+    parser.add_argument(
+        "--debug-html", action="store_true",
+        help=(
+            "Save raw HTML for each brand to debug_*.html files so you can "
+            "inspect the actual DOM and fix selectors. Use with --brand to "
+            "target one brand at a time."
+        )
+    )
     return parser.parse_args()
 
 
@@ -771,19 +987,27 @@ def main():
     else:  # --all
         targets = brands
 
+    if args.debug_html:
+        log.info("⚠️  DEBUG MODE: raw HTML will be saved for each brand.")
+
     log.info(f"\nStarting scrape for {len(targets)} brand(s)...\n")
 
     all_coupons = []
     total = len(targets)
 
-    for i, brand_config in enumerate(targets, 1):
-        log.info(f"Progress: {i}/{total}")
-        brand_coupons = scrape_brand(brand_config)
-        all_coupons.extend(brand_coupons)
+    try:
+        for i, brand_config in enumerate(targets, 1):
+            log.info(f"Progress: {i}/{total}")
+            brand_coupons = scrape_brand(brand_config, debug=args.debug_html)
+            all_coupons.extend(brand_coupons)
 
-        # Brief pause between brands
-        if i < total:
-            polite_sleep()
+            # Brief pause between brands
+            if i < total:
+                polite_sleep()
+
+    finally:
+        # Always clean up the browser, even if we crash mid-run
+        shutdown_browser()
 
     # ── Summary ──
     verified   = [c for c in all_coupons if c["confidence"] == "verified"]
